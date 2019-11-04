@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://jzoj.net/senior/#contest/show/2853/0 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+		
+		<title>Gold Medal Online Judge System</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Fortuna Online Judge System Default Framework">
+		<meta name="author" content="moreD">
+		
+
+		<link href="./Gold Medal Online Judge SystemT1_files/bootstrap.min.css" rel="stylesheet">
+		<link href="./Gold Medal Online Judge SystemT1_files/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="./Gold Medal Online Judge SystemT1_files/style.css" rel="stylesheet">
+
+		<script> OJTitle = "Gold Medal Online Judge System"; </script>
+		<script src="./Gold Medal Online Judge SystemT1_files/jquery.min.js.下载"></script>
+		<script src="./Gold Medal Online Judge SystemT1_files/jquery.form.js.下载"></script>
+		<script src="./Gold Medal Online Judge SystemT1_files/bootstrap.min.js.下载"></script>
+		<script src="./Gold Medal Online Judge SystemT1_files/framework.js.下载"></script>
+		<script src="./Gold Medal Online Judge SystemT1_files/jquery.hashchange.min.js.下载"></script>
+		<script src="./Gold Medal Online Judge SystemT1_files/ckeditor.js.下载"></script><style>.cke{visibility:hidden;}</style>
+		<script src="./Gold Medal Online Judge SystemT1_files/ckfinder.js.下载"></script>
+
+		<script type="text/javascript" src="./Gold Medal Online Judge SystemT1_files/angular.min.js.下载"></script>
+
+				
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+
+<body onload="init_framework()">
+	<div id="nav_toggle" class="well" style="padding: 2px; position:fixed; top: 35px; left:0px">
+		<i id="icon_nav_toggle" class="icon-arrow-left"></i>
+	</div>
+	<div id="scroll_tip" class="well affix-top" style="padding: 2px; position:fixed; right:0px; bottom:120px" onclick="javascript:scroll(0,0)">
+		<i class="icon-arrow-up"></i>
+	</div>
+	
+	<div class="container-fluid">
+		<div class="row-fluid">
+		
+			<!-- Header -->
+			<div class="span12">
+				<div class="well" style="padding: 7px; min-height:560px">
+					<div class="tabbable tabs-left">
+						<ul id="navigation" class="nav nav-tabs pull-left">
+							<li>
+								<label id="countdown"></label>
+							</li>
+							<li>
+								<div id="userinfo" style="display: block;">	<div class="mb_10">
+		<a href="http://jzoj.net/senior/#users/2019%E6%AD%A6%E6%B1%89%E5%A4%96%E5%9B%BD%E8%AF%AD%E5%AD%A6%E6%A0%A1%E7%86%8A%E6%B3%BD%E6%81%A9" id="username">
+			<div style="text-align:center; padding:3px; margin: 0 auto" class="well">
+				<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD//gA8Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSkcg%0ASlBFRyB2ODApLCBxdWFsaXR5ID0gMTAwCv/bAEMAAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEB%0AAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf/bAEMBAQEBAQEBAQEBAQEBAQEB%0AAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf/AABEIADwA%0AOwMBEQACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQD%0ABQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygp%0AKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJma%0AoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/%0AxAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQID%0AEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RF%0ARkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqy%0As7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2gAMAwEAAhEDEQA/%0AAP78ncLyxPGe5AzyPQfnkD365TaQem58RfF7/goZ+yz8HpbSzvviFaeONWvV1Ex6V8MmtPGslsdL%0AubmwvItV1TTbweH9Hu49TtZtO/s/U9XtdSa5SYrZGC2u5YPy7jXxl8POAXGlxFn9CljJqTjgMGpY%0A7G2gpOTnRwvtHSUXFRbqunrOPR3PrMj4I4l4hUqmXZfUeHglzYmv+4oXkk1y1J29p7rv+7Ukr2bT%0A0PhLxF/wWj0MHTv+ER+BGuTh9Wt11dvFXjHS9Me30BdajS6m0+HQ9P8AEEdzq8nhvzLmK2ubuzs7%0A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%0AP5yu+7+8/9k=">
+			</div>
+			<div style="text-align:center; margin: 3px auto 0">
+				<span class="label label-info">2019武汉外国语学校熊泽恩</span>
+			</div>
+		</a>
+		<div style="text-align:center; margin-top:3px">
+			<a href="http://jzoj.net/senior/#misc/mailbox" style="text-decoration: none">
+				<i class="icon-envelope"></i>
+				<span class="badge badge-important" id="unread_mail_count" style="padding: 1px 4px"></span>
+			</a>
+			<a id="setting" href="http://jzoj.net/senior/#users/2019%E6%AD%A6%E6%B1%89%E5%A4%96%E5%9B%BD%E8%AF%AD%E5%AD%A6%E6%A0%A1%E7%86%8A%E6%B3%BD%E6%81%A9/settings" style="text-decoration: none">
+				<i class="icon-cog" style="margin-left: 3px"></i>
+			</a>
+			<a id="logout" href="javascript:void(0)" style="text-decoration: none">
+				<i class="icon-off" style="margin-left: 3px"></i>
+			</a>
+		</div>
+	</div>
+</div>
+								<div class="clearfix"></div>
+							</li>
+							<li class="nav_bar" id="nav_home"><a href="http://jzoj.net/senior/#main/home">Home</a></li>
+							<li class="nav_bar" id="nav_problemset"><a href="http://jzoj.net/senior/#main/problemset">ProblemSet</a></li>
+							<li class="nav_bar" id="nav_status"><a href="http://jzoj.net/senior/#main/status">Status</a></li>
+							<li class="nav_bar active" id="nav_contest">
+								<a href="http://jzoj.net/senior/#contest">Contest									<span class="badge badge-important" id="running_contest_count" style="padding: 1px 4px">3</span>
+								</a>
+							</li>
+							<li class="nav_bar" id="nav_task"><a href="http://jzoj.net/senior/#task/task_list">Task</a></li>
+							<li class="nav_bar" id="nav_group"><a href="http://jzoj.net/senior/#group/group_list">Groups</a></li>
+							<li class="nav_bar" id="nav_ranklist"><a href="http://jzoj.net/senior/#main/ranklist">Ranklist</a></li>
+							<li class="nav_bar" id="nav_custom_test"><a href="http://jzoj.net/senior/#customtest/run">CustomTest</a></li>
+							<li id="nav_admin" class="dropdown">
+								<a href="http://jzoj.net/senior/#" class="dropdown-toggle" data-toggle="dropdown">Administer<b class="caret"></b></a>
+								<ul class="dropdown-menu" style="top:auto; bottom:100%">
+									<li class="nav_bar"><a href="http://jzoj.net/senior/#admin/problemset">ProblemSet</a></li>
+									<li class="nav_bar nav_admin" style="display:none"><a href="http://jzoj.net/senior/#admin/contestlist">Contest</a></li>
+									<li class="nav_bar nav_admin" style="display:none"><a href="http://jzoj.net/senior/#admin/task_list">Task</a></li>
+									<li class="nav_bar nav_admin" style="display:none"><a href="http://jzoj.net/senior/#admin/users">User</a></li>
+									<li class="nav_bar nav_admin" style="display:none"><a href="http://jzoj.net/senior/#admin/setallowings">Manage Viewing Permissions</a></li>
+									<li class="nav_bar nav_admin" style="display:none"><a href="http://jzoj.net/senior/#admin/statistic">Statistic</a></li>
+									<li class="nav_bar nav_admin" style="display:none"><a href="http://jzoj.net/senior/#admin/rejudge">Rejudge</a></li>
+									<li class="nav_bar nav_admin" style="display:none"><a href="http://jzoj.net/senior/#admin/manage_tags">Manage Tags</a></li>
+									<li class="nav_bar nav_admin" style="display:none"><a href="http://jzoj.net/senior/#admin/items">Manage Items</a></li>
+									<li class="nav_bar nav_admin" style="display:none"><a href="http://jzoj.net/senior/#admin/orders">Manage Orders</a></li>
+									<li class="nav_bar nav_admin" style="display:none"><a href="http://jzoj.net/senior/#admin/functions">Miscellaneous</a></li>
+									<li class="nav_bar nav_admin" style="display:none"><a href="http://jzoj.net/senior/#admin/global_settings">Global Settings</a></li>
+								</ul>
+							</li>
+						</ul>
+						
+						<div id="page_content" class="tab-content" style="float: none; display: block;"><div class="navbar">
+	<div class="navbar-inner">
+		<ul class="nav">
+			<li><a href="http://jzoj.net/senior/#contest"><i class="icon-arrow-left"></i></a></li>
+			<li><a href="http://jzoj.net/senior/#contest/home/2853">Home</a></li>
+			<li><a href="http://jzoj.net/senior/#contest/problems/2853">Problem</a></li>
+			<li><a href="http://jzoj.net/senior/#contest/declaration_list/2853">Declaration				<span class="badge badge-info">1</span>			</a></li>
+			<li><a href="http://jzoj.net/senior/#contest/status/2853">Status</a></li>
+			<li><a href="http://jzoj.net/senior/#contest/standing/2853">Standing</a></li>
+			<li><a href="http://jzoj.net/senior/#contest/statistic/2853">Statistic</a></li>
+			<li><a href="http://jzoj.net/senior/#contest/forum/2853">Forum</a></li>
+		</ul>
+	</div>
+</div>
+<div class="row-fluid">
+	<div id="header"><div style="text-align:center"><h2>粉刷(paint) <sub>(Standard IO)</sub></h2><div>Time Limits: <span class="badge badge-info">1000 ms</span> &nbsp;Memory Limits: <span class="badge badge-info">131072 KB</span> &nbsp;Detailed Limits&nbsp; <a href="http://jzoj.net/senior/#main/limits/3503" style="text-align:left"><span id="trigger" data-original-title="" title=""><i class="icon-chevron-down"></i></span></a></div><span id="time-remaining">Time Remaining: 00:06:58</span><button style="margin-top:3px" class="btn btn-primary" onclick="load_page(&#39;main/submit/3503/2853&#39;)">Submit</button></div></div>
+</div>
+
+
+<div class="row-fluid" style="margin-top:7px">
+	<div id="mainbar">
+		<div class="problem">
+			<div class="span12 well"><fieldset>
+				<legend><h4>Description</h4></legend>
+				<div class="content">鸡腿想到了一个很高（sha）明（bi）的问题，墙可以看作一个N*M的矩阵，有一些格子是有污点的。现在鸡腿可以竖着刷一次，覆盖连续的最多C列，或者横着刷一次，覆盖连续的最多R行。现在鸡腿把墙上的情况告诉你，请你告诉鸡腿最少要刷多少次才能刷干净！</div>
+			</fieldset></div>
+			<div class="clearfix"></div>
+			
+			<div>
+				<div class="span6 well"><fieldset>
+					<legend><h4>Input</h4></legend>
+					<div class="content">第1行，输入俩正整数N，M。<br><br>
+第2到N+1行，每行一个长度为M的字符串，每个字符可能是’.’表示干净的，或者’X’表示这个格子有污点。<br><br>
+第N+2行，输入俩正整数表示R和C。</div>
+				</fieldset></div>
+			
+				<div class="span6 well"><fieldset>
+					<legend><h4>Output</h4></legend>
+					<div class="content">输出一行一个整数，表示鸡腿最少要刷几次。</div>
+				</fieldset></div>
+			</div>
+			<div class="clearfix"></div>
+			
+			<div>
+				<div class="span6 well"><fieldset>
+					<legend><h4>Sample Input</h4></legend>
+					<div class="content"><pre style="border:none;font-size:110%">输入1：<br>
+1 9<br>
+XXXXXXXXX<br>
+2 3<br>
+输入2：<br>
+<br>
+11 14<br>
+XXX..XXX..XXX.<br>
+.X..X....X...X<br>
+.X..X....X...X<br>
+.X..X....X...X<br>
+.X...XXX..XXX.<br>
+..............<br>
+...XX...XXX...<br>
+....X......X..<br>
+....X....XXX..<br>
+....X......X..<br>
+...XXX..XXX...<br>
+1 2</pre></div> <!-- nl2br not needed in pre -->
+				</fieldset></div>
+			
+				<div class="span6 well"><fieldset>
+					<legend><h4>Sample Output</h4></legend>
+					<div class="content"><pre style="border:none;font-size:110%">输出1：<br>
+1<br>
+输出2：<br>
+7</pre></div>
+				</fieldset></div>
+			</div>
+			<div class="clearfix"></div>
+		
+			<div class="well"><fieldset>
+				<legend><h4>Data Constraint</h4></legend>
+				<div class="content">对于50%的数据1≤N，M≤5；<br><br>
+对于100%的数据1≤N，M，R，C≤15。</div>
+			</fieldset></div>
+			<div class="clearfix"></div>
+			
+					</div>
+	</div>
+</div>
+
+<div style="text-align:center"><button style="margin-top:3px" class="btn btn-primary" onclick="load_page(&#39;main/submit/3503/2853&#39;)">Submit</button></div>
+
+
+
+
+</div>
+						
+						<div class="clearfix"></div>
+					</div>
+					
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="clearfix"></div>
+		
+		<!-- footer -->
+		<div class="row-fluid">
+			<div class="span12" id="copyleft">
+				<label id="server_time">Server time: Sat Aug 17 2019 11:28:08 GMT+0800 (中国标准时间)</label>
+				<a href="https://github.com/roastduck/fortuna-oj" target="_blank">Fortuna OJ 项目</a><br>
+				Author: <a href="https://github.com/moreD" target="_blank">moreD</a>, <a href="https://github.com/roastduck" target="_blank">RD</a>;
+				Collaborator: <a href="https://github.com/tarawa" target="_blank">twilight</a>, <a href="https://github.com/mchobbylong" target="_blank">McHobby</a><br>
+				Powered by CodeIgniter / Bootstrap<br>
+				Icons provided by <a href="http://glyphicons.com/">Glyphicons</a><br>
+							</div>
+		</div>
+		
+		<script type="text/javascript">
+			delta = 1000 * 1566012474 - $.now();
+
+			setInterval("$('#server_time').html('Server time: ' + (new Date($.now() + delta).toString()));", 1000);
+
+			//var remain = (new Date("2013/5/18,8:00:00").getTime() - new Date(timer).getTime());
+			//setInterval("$('#countdown').html('Time to GDOI:<br/><p style=\"text-align:center\">' + Math.floor(remain / (1000 * 86400)) + ' Days</p>'); remain += 1000;", 1000);
+			
+			var browser = navigator.userAgent;
+			$('#scroll_tip').affix();
+			load_userinfo(); var logged_in = true;			
+			var hash = window.location.hash;
+			if (hash.indexOf('main/problemset') != -1) $('#nav_problemset').addClass('active');
+			else if (hash.indexOf('main/status') != -1) $('#nav_status').addClass('active');
+			else if (hash.indexOf('task') != -1) $('#nav_task').addClass('active');
+			else if (hash.indexOf('group') != -1) $('#nav_group').addClass('active');
+			else if (hash.indexOf('contest') != -1) $('#nav_contest').addClass('active');
+			else if (hash.indexOf('main/ranklist') != -1) $('#nav_ranklist').addClass('active');
+			else if (hash.indexOf('main/customtest') != -1) $('#nav_custom_test').addClass('active');
+			else if (hash.indexOf('main/home') != -1) $('#nav_home').addClass('active');
+			else if (hash.indexOf('admin') != -1) $('#nav_admin').addClass('active');
+		</script>
+	</div>
+	
+	<div class="overlay" style="z-index: -1000; display: none; opacity: 0;"></div>
+
+
+
+</body></html>

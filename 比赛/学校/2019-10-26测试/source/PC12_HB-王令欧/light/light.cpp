@@ -1,0 +1,3 @@
+#include <cstdio>
+#include <iostream>
+using namespace std;const int maxn=1e5+7;int n,m;int a[maxn];inline int read(int &x){register int f=0;register char ch=getchar();while(ch<'0' || ch>'9')f|=ch=='-',ch=getchar();while(ch>='0' && ch<='9')x=(x<<1)+(x<<3)+(ch^48),ch=getchar();x=f?-x:x;}inline void write(int x){if(x<0)putchar('-'),x=-x;if(x>9)write(x/10);putchar(x%10+'0');}int main(){freopen("light.in","r",stdin);freopen("light.out","w",stdout);read(n),read(m);for(int i=1;i<=n;i++)read(a[i]);if(n<=1000){for(int i=1;i<=m;i++){int l=0,r=0,p=0,v=0,ans=0;read(l),read(r),read(p),read(v);for(int j=l;j<=r;j++)if(a[j]%p==v)ans++;write(ans),putchar('\n');}return 0;}return 0;}

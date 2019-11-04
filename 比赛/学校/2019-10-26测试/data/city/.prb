@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<problem type="TRA_0_4" maker="ccr-plus">
+    <source file="city" dir="city" code="100">
+        <language file="city.c" time="10" cmd="gcc -o city city.c -lm -static"/>
+        <language file="city.cpp" time="10" cmd="g++ -o city city.cpp -lm -static"/>
+        <language file="city.pas" time="10" cmd="fpc city.pas"/>
+    </source>
+    <task input="city.in" time="10" output="city.out" checker="fulltext">
+        <subtask score="10">
+            <point mem="128" out="city1.out" time="1" in="city1.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="city2.out" time="1" in="city2.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="city3.out" time="1" in="city3.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="city4.out" time="1" in="city4.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="city5.out" time="1" in="city5.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="city6.out" time="1" in="city6.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="city7.out" time="1" in="city7.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="city8.out" time="1" in="city8.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="city9.out" time="1" in="city9.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="city10.out" time="1" in="city10.in"/>
+        </subtask>
+    </task>
+</problem>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<problem type="TRA_0_4" maker="ccr-plus">
+    <source file="sort" dir="sort" code="100">
+        <language file="sort.c" time="10" cmd="gcc -o sort sort.c -lm -static"/>
+        <language file="sort.cpp" time="10" cmd="g++ -o sort sort.cpp -lm -static"/>
+        <language file="sort.pas" time="10" cmd="fpc sort.pas"/>
+    </source>
+    <task input="sort.in" time="10" output="sort.out" checker="fulltext">
+        <subtask score="12">
+            <point mem="128" out="output1.txt" time="1" in="input1.txt"/>
+        </subtask>
+        <subtask score="12">
+            <point mem="128" out="output2.txt" time="1" in="input2.txt"/>
+        </subtask>
+        <subtask score="12">
+            <point mem="128" out="output3.txt" time="1" in="input3.txt"/>
+        </subtask>
+        <subtask score="12">
+            <point mem="128" out="output4.txt" time="1" in="input4.txt"/>
+        </subtask>
+        <subtask score="13">
+            <point mem="128" out="output5.txt" time="1" in="input5.txt"/>
+        </subtask>
+        <subtask score="13">
+            <point mem="128" out="output6.txt" time="1" in="input6.txt"/>
+        </subtask>
+        <subtask score="13">
+            <point mem="128" out="output7.txt" time="1" in="input7.txt"/>
+        </subtask>
+        <subtask score="13">
+            <point mem="128" out="output8.txt" time="1" in="input8.txt"/>
+        </subtask>
+    </task>
+</problem>

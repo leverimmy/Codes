@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<problem type="TRA_0_4" maker="ccr-plus">
+    <source file="diary" dir="diary" code="100">
+        <language file="diary.c" time="10" cmd="gcc -o diary diary.c -lm -static"/>
+        <language file="diary.cpp" time="10" cmd="g++ -o diary diary.cpp -lm -static"/>
+        <language file="diary.pas" time="10" cmd="fpc diary.pas"/>
+    </source>
+    <task input="diary.in" time="10" output="diary.out" checker="fulltext">
+        <subtask score="10">
+            <point mem="128" out="diary1.out" time="1" in="diary1.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="diary2.out" time="1" in="diary2.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="diary3.out" time="1" in="diary3.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="diary4.out" time="1" in="diary4.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="diary5.out" time="1" in="diary5.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="diary6.out" time="1" in="diary6.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="diary7.out" time="1" in="diary7.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="diary8.out" time="1" in="diary8.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="diary9.out" time="1" in="diary9.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="diary10.out" time="1" in="diary10.in"/>
+        </subtask>
+    </task>
+</problem>

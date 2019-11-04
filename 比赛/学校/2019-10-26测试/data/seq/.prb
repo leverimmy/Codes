@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<problem type="TRA_0_4" maker="ccr-plus">
+    <source file="seq" dir="seq" code="100">
+        <language file="seq.c" time="10" cmd="gcc -o seq seq.c -lm -static"/>
+        <language file="seq.cpp" time="10" cmd="g++ -o seq seq.cpp -lm -static"/>
+        <language file="seq.pas" time="10" cmd="fpc seq.pas"/>
+    </source>
+    <task input="seq.in" time="10" output="seq.out" checker="fulltext">
+        <subtask score="10">
+            <point mem="128" out="seq1.out" time="1" in="seq1.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="seq2.out" time="1" in="seq2.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="seq3.out" time="1" in="seq3.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="seq4.out" time="1" in="seq4.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="seq5.out" time="1" in="seq5.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="seq6.out" time="1" in="seq6.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="seq7.out" time="1" in="seq7.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="seq8.out" time="1" in="seq8.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="seq9.out" time="1" in="seq9.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="seq10.out" time="1" in="seq10.in"/>
+        </subtask>
+    </task>
+</problem>

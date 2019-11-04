@@ -1,0 +1,9 @@
+copy bomb0.out  bomb0.ans > nul
+copy bomb2.out  bomb2.ans > nul
+copy bomb3.out  bomb3.ans > nul
+copy bomb4.out  bomb4.ans > nul
+copy bomb5.out  bomb5.ans > nul
+copy bomb6.out  bomb6.ans > nul
+copy bomb7.out  bomb7.ans > nul
+copy bomb8.out  bomb8.ans > nul
+copy bomb9.out  bomb9.ans > nul

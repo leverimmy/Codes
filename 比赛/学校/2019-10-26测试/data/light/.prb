@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<problem type="TRA_0_4" maker="ccr-plus">
+    <source file="light" dir="light" code="100">
+        <language file="light.c" time="10" cmd="gcc -o light light.c -lm -static"/>
+        <language file="light.cpp" time="10" cmd="g++ -o light light.cpp -lm -static"/>
+        <language file="light.pas" time="10" cmd="fpc light.pas"/>
+    </source>
+    <task input="light.in" time="10" output="light.out" checker="fulltext">
+        <subtask score="10">
+            <point mem="128" out="light1.out" time="1" in="light1.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="light2.out" time="1" in="light2.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="light3.out" time="1" in="light3.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="light4.out" time="1" in="light4.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="light5.out" time="1" in="light5.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="light6.out" time="1" in="light6.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="light7.out" time="1" in="light7.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="light8.out" time="1" in="light8.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="light9.out" time="1" in="light9.in"/>
+        </subtask>
+        <subtask score="10">
+            <point mem="128" out="light10.out" time="1" in="light10.in"/>
+        </subtask>
+    </task>
+</problem>

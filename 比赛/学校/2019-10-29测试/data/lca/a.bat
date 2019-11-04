@@ -1,0 +1,10 @@
+copy lca1.out  lca1.ans > nul
+copy lca2.out  lca2.ans > nul
+copy lca3.out  lca3.ans > nul
+copy lca4.out  lca4.ans > nul
+copy lca5.out  lca5.ans > nul
+copy lca6.out  lca6.ans > nul
+copy lca7.out  lca7.ans > nul
+copy lca8.out  lca8.ans > nul
+copy lca9.out  lca9.ans > nul
+copy lca10.out  lca10.ans > nul

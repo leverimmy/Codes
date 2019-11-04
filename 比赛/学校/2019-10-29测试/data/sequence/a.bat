@@ -1,0 +1,10 @@
+copy sequence1.out  sequence1.ans > nul
+copy sequence2.out  sequence2.ans > nul
+copy sequence3.out  sequence3.ans > nul
+copy sequence4.out  sequence4.ans > nul
+copy sequence5.out  sequence5.ans > nul
+copy sequence6.out  sequence6.ans > nul
+copy sequence7.out  sequence7.ans > nul
+copy sequence8.out  sequence8.ans > nul
+copy sequence9.out  sequence9.ans > nul
+copy sequence10.out  sequence10.ans > nul

@@ -1,0 +1,10 @@
+copy interval1.out  interval1.ans > nul
+copy interval2.out  interval2.ans > nul
+copy interval3.out  interval3.ans > nul
+copy interval4.out  interval4.ans > nul
+copy interval5.out  interval5.ans > nul
+copy interval6.out  interval6.ans > nul
+copy interval7.out  interval7.ans > nul
+copy interval8.out  interval8.ans > nul
+copy interval9.out  interval9.ans > nul
+copy interval10.out  interval10.ans > nul
