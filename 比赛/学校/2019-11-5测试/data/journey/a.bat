@@ -1,0 +1,10 @@
+copy journey1.out  journey1.ans > nul
+copy journey2.out  journey2.ans > nul
+copy journey3.out  journey3.ans > nul
+copy journey4.out  journey4.ans > nul
+copy journey5.out  journey5.ans > nul
+copy journey6.out  journey6.ans > nul
+copy journey7.out  journey7.ans > nul
+copy journey8.out  journey8.ans > nul
+copy journey9.out  journey9.ans > nul
+copy journey10.out  journey10.ans > nul
