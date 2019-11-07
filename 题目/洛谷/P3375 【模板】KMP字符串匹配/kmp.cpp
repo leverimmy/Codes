@@ -1,69 +1,58 @@
-#include <cstdio>
-#include <cstring>
-#include <cctype>
-#include <algorithm>
+#include <bits/stdc++.h>
 #define ll long long
-#define il inline
 #define rgi register int
+#define rgl register long long
+#define il inline
 
-using namespace std;
+const int N = 1e6 + 10;
 
-const int N = 1000000 + 10;
+char A[N], B[N];
+int LENB, _next[N];
 
-char S[N], T[N];
-int _next[N];
-
-il int read()
-{
-	rgi x = 0, f = 0, ch;
-	while(!isdigit(ch = getchar())) f |= ch == '-';
-	while(isdigit(ch)) x = (x << 1) + (x << 3) + (ch ^ 48), ch = getchar();
-	return f ? -x : x;
-}
-
-void Get_Next(char str[])
-{
-	int len = strlen(str), j, k;
-	_next[0] = -1, j = 0, k = -1;
-	while(j < len)
-	{
-		if(k == -1 || str[j] == str[k])
-		{
-			j++, k++;
-			_next[j] = k;
-		}
-		else
-			k = _next[k];
+void Get_Next(char str[]) {
+	int len = strlen(str + 1);
+	
+	for(rgi i = 2, j = 0; i <= len; ++i) {
+		
+		while(j > 0 && str[j + 1] != str[i])
+			j = _next[j];
+		if(str[j + 1] == str[i])
+			++j;
+		_next[i] = j;
 	}
 }
 
-void KMP(char T[], char S[])//”√s∆•≈‰t
-{
-	int lent = strlen(T), lens = strlen(S);
-	int i = 0, j = 0;
-	while(i < lent && j < lens)
-	{
-		if(j == -1 || T[i] == S[j])
+void KMP(char strA[], char strB[]) {
+	int lena = strlen(strA + 1), lenb = strlen(strB + 1);
+	
+	for(rgi i = 0, j = 0; i <= lena;) {
+		
+		if(j == lenb)
+			printf("%d\n", i - lenb + 1);
+		if(strA[i + 1] == strB[j + 1])
 			i++, j++;
-		else
-			j = _next[j];
-		if(j == lens)
-		{
-			printf("%d\n", i - j + 1);
-			j = _next[j];
+		else {
+			if(j == 0)
+				i++;
+			else
+				j = _next[j];
 		}
 	}
+	
 }
 
-int main()
-{
-	scanf("%s", T);
-	scanf("%s", S);
-	Get_Next(S);
-	KMP(T, S);
-	int sss = strlen(S);
-	for(rgi i = 1; i <= sss; ++i)
-		printf("%d ", _next[i]);
+int main() {
+	scanf("%s", A + 1);
+	scanf("%s", B + 1);	LENB = strlen(B + 1);
+	
+	Get_Next(B);
+	KMP(A, B);
+	
+	for(rgi i = 1; i <= LENB; ++i)	printf("%d ", _next[i]);
 	return 0;
 }
+/*
+ABABABC
+ABA
 
+*/
