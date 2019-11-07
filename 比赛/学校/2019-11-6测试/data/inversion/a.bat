@@ -1,0 +1,10 @@
+copy inversion1.out  inversion1.ans > nul
+copy inversion2.out  inversion2.ans > nul
+copy inversion3.out  inversion3.ans > nul
+copy inversion4.out  inversion4.ans > nul
+copy inversion5.out  inversion5.ans > nul
+copy inversion6.out  inversion6.ans > nul
+copy inversion7.out  inversion7.ans > nul
+copy inversion8.out  inversion8.ans > nul
+copy inversion9.out  inversion9.ans > nul
+copy inversion10.out  inversion10.ans > nul

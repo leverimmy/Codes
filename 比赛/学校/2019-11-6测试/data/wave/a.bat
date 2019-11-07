@@ -1,0 +1,10 @@
+copy wave1.out  wave1.ans > nul
+copy wave2.out  wave2.ans > nul
+copy wave3.out  wave3.ans > nul
+copy wave4.out  wave4.ans > nul
+copy wave5.out  wave5.ans > nul
+copy wave6.out  wave6.ans > nul
+copy wave7.out  wave7.ans > nul
+copy wave8.out  wave8.ans > nul
+copy wave9.out  wave9.ans > nul
+copy wave10.out  wave10.ans > nul
