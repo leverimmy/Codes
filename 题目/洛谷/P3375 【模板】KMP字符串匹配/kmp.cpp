@@ -7,18 +7,17 @@
 const int N = 1e6 + 10;
 
 char A[N], B[N];
-int LENB, _next[N];
+int LENB, _next[N] = {-1};
 
 void Get_Next(char str[]) {
 	int len = strlen(str + 1);
 	
-	for(rgi i = 2, j = 0; i <= len; ++i) {
-		
-		while(j > 0 && str[j + 1] != str[i])
+	for(rgi i = 1, j = 0; i < len; ++i, j = _next[i]) {
+		while(j > 0 && str[j + 1] != str[i + 1])
 			j = _next[j];
-		if(str[j + 1] == str[i])
+		if(str[j + 1] == str[i + 1])
 			++j;
-		_next[i] = j;
+		_next[i + 1] = j;
 	}
 }
 
@@ -42,6 +41,7 @@ void KMP(char strA[], char strB[]) {
 }
 
 int main() {
+//	freopen("testdata.in", "r", stdin);
 	scanf("%s", A + 1);
 	scanf("%s", B + 1);	LENB = strlen(B + 1);
 	
