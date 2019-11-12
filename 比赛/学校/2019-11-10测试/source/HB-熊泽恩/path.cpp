@@ -4,14 +4,11 @@
 #define rgl register long long
 #define il inline
 
-#define MSET std::multiset <int>::iterator
-
 const int oo = 0x3f3f3f3f;
 const int N = 1e5 + 10;
 
-int n, cnt, ans = oo, sum;
-int first[N], dep[N], dis[N], lg2[N] = {-1}, rt[N];
-int f[N][20];
+int n, cnt, root1, root2, ans = oo, sum, max_depth;
+int first[N], dep[N], lg2[N] = {-1}, rt[N], f[N][20], dis[N];
 
 struct edge {
 	int to, _next, wt;
@@ -55,9 +52,8 @@ int lca(int u, int v) {
 	return f[u][0];
 }
 
-int dist(int a, int b) {
-	int LCA = lca(a, b);
-	return dis[a] + dis[b] - dis[LCA];
+int dist(int u, int v) {
+	return dis[u] + dis[v] - 2 * dis[lca(u, v)];
 }
 
 int main() {
@@ -70,21 +66,27 @@ int main() {
 		int u = read(), v = read(), w = read();
 		Add_Edge(u, v, w);
 		Add_Edge(v, u, w);
-		sum += w;
+		sum += w << 1;
 	}
-	
-	dfs(1, 0, 0);
-	
-	sum <<= 1;
 	
 	for(rgi i = 1; i <= n; ++i)	rt[i] = read();
 	
-	for(rgi i = 1, cur_sum = 0; i <= n; ++i, cur_sum = 0)	if(rt[i]) {
-		for(rgi j = 1; j <= n; ++j) {
-			cur_sum = dist(i, j);
-			ans = std::min(ans, sum - cur_sum);
+	dfs(1, 0, 0);	max_depth = -1;
+	for(rgi i = 1; i <= n; ++i)
+		if(dis[i] > max_depth) {
+			root1 = i;
+			max_depth = dis[i];
 		}
-	}
+	dfs(root1, 0, 0);	max_depth = -1;
+	for(rgi i = 1; i <= n; ++i)
+		if(dis[i] > max_depth) {
+			root2 = i;
+			max_depth = dis[i];
+		}
+	dfs(root2, 0, 0);
+	
+	for(rgi i = 1; i <= n; ++i)	if(rt[i])
+		ans = std::min(ans, sum - std::max(dist(root1, i), dist(root2, i)));
 	
 	printf("%d", ans);
 	
@@ -97,5 +99,17 @@ int main() {
 3 4 3
 3 5 4
 1 1 1 0 0 
+
+10
+1 7 7273
+1 9 5130
+7 5 476
+1 6 4908
+5 3 703
+1 2 7458
+1 4 6528
+1 10 2518
+2 8 7466
+0 0 0 0 1 0 1 1 0 0
 
 */

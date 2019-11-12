@@ -4,8 +4,8 @@
 #define rgl register long long
 #define il inline
 
-const int N = 2e5 + 10;
-const int M = 2e5 + 10;
+const int N = 5e5 + 10;
+const int M = 5e5 + 10;
 
 int n, cnt1, cnt2, cnt3, tot;
 int first1[N], first2[N], first3[N], ideg[N], T[N];
@@ -17,7 +17,7 @@ struct edge {
 
 template <typename T> class queue {
 	private:
-		static const int MAX_SIZE = 2e5;
+		static const int MAX_SIZE = 5e5;
 		int _head, _tail;	T _q[MAX_SIZE + 10];
 	public:
 		void push(T val) {_q[++_tail] = val;}
@@ -54,7 +54,7 @@ void Add_Edge3(int u, int v) {
 }
 
 void Toposort() {
-	queue <int> q;
+	std::queue <int> q;
 	for(rgi i = 1; i <= n; ++i)	if(!ideg[i])
 		q.push(i);
 	while(!q.empty()) {
@@ -91,8 +91,8 @@ void dfs(int x) {
 }
 
 int main() {
-//	freopen("catas.in", "r", stdin);
-//	freopen("catas.out", "w", stdout);
+	freopen("catas.in", "r", stdin);
+	freopen("catas.out", "w", stdout);
 	
 	n = read();
 	for(rgi i = 1; i <= n; ++i)	lg2[i] = lg2[i >> 1] + 1;
