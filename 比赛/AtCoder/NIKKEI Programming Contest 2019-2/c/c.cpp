@@ -4,6 +4,12 @@
 #define rgl register long long
 #define il inline
 
+const int N = 2e5 + 10;
+
+int n, tot, cnt, num[N], nxt[N], vis[N];
+int a[N], sortA[N], rankA[N];
+int b[N], sortB[N], posB[N];
+
 il int read() {
 	rgi x = 0, f = 0, ch;
 	while(!isdigit(ch = getchar())) f |= ch == '-';
@@ -13,10 +19,51 @@ il int read() {
 
 int main() {
 	n = read();
-	for(rgi i = 1; i <= n; ++i)	a[i] = read();
-	for(rgi i = 1; i <= n; ++i)	b[i] = read();
+	for(rgi i = 1; i <= n; ++i)	a[i] = num[++tot] = read();
+	for(rgi i = 1; i <= n; ++i)	b[i] = num[++tot] = read();
 	
+	std::sort(num + 1, num + tot + 1);
+	tot = std::unique(num + 1, num + tot + 1) - (num + 1);
+	for(rgi i = 1; i <= n; ++i)	a[i] = std::lower_bound(num + 1, num + tot + 1, a[i]) - (num + 1) + 1;
+	for(rgi i = 1; i <= n; ++i)	b[i] = std::lower_bound(num + 1, num + tot + 1, b[i]) - (num + 1) + 1;
+	//Discrete
 	
+	for(rgi i = 1; i <= n; ++i)	sortA[i] = a[i];
+	for(rgi i = 1; i <= n; ++i)	sortB[i] = b[i];
+	std::sort(sortA + 1, sortA + n + 1);
+	std::sort(sortB + 1, sortB + n + 1);
+	//Smallest Permutation
+	
+	for(rgi i = 1; i <= n; ++i)	if(sortA[i] > sortB[i]) {
+		puts("No");
+		return 0;
+	}
+	
+	for(rgi i = 1; i <= n - 1; ++i)	if(sortA[i + 1] <= sortB[i]) {
+		puts("Yes");
+		return 0;
+	}
+	//Exclusion
+	
+	for(rgi i = 1; i <= n; ++i)	posB[b[i]] = i;
+	//pos in b[]
+	
+	for(rgi i = 1; i <= n; ++i) rankA[sortA[i]] = i;
+	//rank in a[]
+	
+	for(rgi i = 1; i <= n; ++i)	nxt[i] = posB[sortB[rankA[a[i]]]];
+	//Add edges
+	
+	for(rgi i = 1; i <= n; ++i)	if(!vis[i]) {
+		int cur = i;
+		do {
+			vis[cur] = 1;
+			cur = nxt[cur];
+		} while(!vis[cur]); 
+		cnt++;
+	}
+	
+	puts(cnt == 1 ? "No" : "Yes");
 	
 	return 0;
 }
