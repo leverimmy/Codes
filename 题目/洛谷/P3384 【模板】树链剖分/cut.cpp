@@ -1,215 +1,192 @@
-#include <cstdio>
-#include <cstring>
-#include <cctype>
-#include <algorithm>
+#include <bits/stdc++.h>
 #define ll long long
-#define il inline
 #define rgi register int
-#define rgl register ll
+#define rgl register long long
+#define il inline
 
-using namespace std;
+const int N = 1e5 + 10;
+const int M = 1e5 + 10;
 
-const int N = 100000 + 10;
-const int M = 100000 + 10;
+int n, m, root, mod, cnt, idx;
+int first[N], W[N], rev[N];
 
-int n, m, rt, mod, cnt, idx;
-int first[N], W[N], maxx[N];
-int f[N], dep[N], siz[N], son[N], dfn[N], rev[N], top[N];
+struct node {
+	int dep, fa, siz, ch, dfn, top;
+	node() {ch = 0;}
+} T[N];
 
-struct edge
-{
+struct edge {
 	int to, _next;
 } e[M << 1];
 
-struct Seg_Tree
-{
-	int lc, rc;
-	int add, val;
+struct segNode {
+	int lc, rc, dat, add;
 } t[N << 2];
 
-il int read()
-{
+il int read() {
 	rgi x = 0, f = 0, ch;
 	while(!isdigit(ch = getchar())) f |= ch == '-';
 	while(isdigit(ch)) x = (x << 1) + (x << 3) + (ch ^ 48), ch = getchar();
 	return f ? -x : x;
 }
 
-void Add_Edge(int u, int v)
-{
+void Add_Edge(int u, int v) {
 	e[cnt].to = v;
 	e[cnt]._next = first[u];
 	first[u] = cnt++;
 }
 
-void Update(int p)
-{
-	t[p].val = (t[p << 1].val + t[p << 1 | 1].val) % mod;
+void dfs1(int x, int p) {
+	T[x].dep = T[p].dep + 1;
+	T[x].fa = p;
+	T[x].siz = 1;
+	for(rgi i = first[x], y = e[i].to; ~i; i = e[i]._next, y = e[i].to) if(y != p) {
+		dfs1(y, x);
+		if(T[y].siz > T[T[x].ch].siz)
+			T[x].ch = y;
+		T[x].siz += T[y].siz;
+	}
 }
 
-void Build(int p, int l, int r)
-{
+void dfs2(int x, int g) {
+	T[x].top = g;
+	T[x].dfn = ++idx;
+	rev[idx] = x;
+	if(T[x].ch)  dfs2(T[x].ch, g);
+	for(rgi i = first[x], y = e[i].to; ~i; i = e[i]._next, y = e[i].to)
+		if(y != T[x].fa && y != T[x].ch) dfs2(y, y);
+}
+
+void Pushup(int p) {
+	t[p].dat = t[p << 1].dat + t[p << 1 | 1].dat;
+}
+
+void Build(int p, int l, int r) {
 	t[p].lc = l, t[p].rc = r;
-	if(l == r)
-	{
-		t[p].val = W[rev[l]];
+	if(l == r) {
+		t[p].dat = W[rev[l]];
 		return;
 	}
 	int mid = l + r >> 1;
-	Build(p << 1, l, mid);
-	Build(p << 1 | 1, mid + 1, r);
-	Update(p);
+	Build(p << 1, l, mid), Build(p << 1 | 1, mid + 1, r);
+	Pushup(p);
 }
 
-void Spread(int p)
-{
-	if(t[p].add != 0)
-	{
-		t[p << 1].add = (t[p << 1].add + t[p].add) % mod;
-		t[p << 1 | 1].add = (t[p << 1 | 1].add + t[p].add) % mod;
-		t[p << 1].val = (t[p << 1].val + t[p].add * (t[p << 1].rc - t[p << 1].lc + 1)) % mod;
-		t[p << 1 | 1].val = (t[p << 1 | 1].val + t[p].add * (t[p << 1 | 1].rc - t[p << 1 | 1].lc + 1)) % mod;
+void Pushdown(int p) {
+	if(t[p].add != 0) {
+		t[p << 1].add += t[p].add, t[p << 1].dat += (t[p << 1].rc - t[p << 1].lc + 1) * t[p].add;
+		t[p << 1 | 1].add += t[p].add, t[p << 1 | 1].dat += (t[p << 1 | 1].rc - t[p << 1 | 1].lc + 1) * t[p].add;
+		t[p << 1].add %= mod, t[p << 1].dat %= mod;
+		t[p << 1 | 1].add %= mod, t[p << 1 | 1].dat %= mod;
 		t[p].add = 0;
 	}
 }
 
-void Add(int p, int l, int r, int val)
-{
-	if(l <= t[p].lc && t[p].rc <= r)
-	{
-		t[p].add = (t[p].add + val) % mod;
-		t[p].val = (t[p].val + (t[p].rc - t[p].lc + 1) * val) % mod;
+void Modify(int p, int l, int r, ll val) {
+	if(l <= t[p].lc && t[p].rc <= r) {
+		t[p].add += val, t[p].add %= mod;
+		t[p].dat += (t[p].rc - t[p].lc + 1) * val, t[p].dat %= mod;
 		return;
-	}
-	Spread(p);
+	} Pushdown(p);
 	int mid = t[p].lc + t[p].rc >> 1;
-	if(l <= mid)
-		Add(p << 1, l, r, val);
-	if(mid < r)
-		Add(p << 1 | 1, l, r, val);
-	Update(p);
+	if(l <= mid) Modify(p << 1, l, r, val);
+	if(mid < r) Modify(p << 1 | 1, l, r, val);
+	Pushup(p);
 }
 
-int Query(int p, int l, int r)
-{
+ll Query(int p, int l, int r) {
 	if(l <= t[p].lc && t[p].rc <= r)
-		return t[p].val;
-	Spread(p);
-	int mid = t[p].lc + t[p].rc >> 1;
-	int res = 0;
-	if(l <= mid)
-		res = (res + Query(p << 1, l, r)) % mod;
-	if(mid < r)
-		res = (res + Query(p << 1 | 1, l, r)) % mod;
-	return res % mod;
-}
-
-void dfs1(int x, int p)
-{
-	f[x] = p;
-	siz[x] = 1;
-	dep[x] = dep[p] + 1;
-	for(rgi i = first[x]; ~i; i = e[i]._next)
-		if(e[i].to != p)
-		{
-			dfs1(e[i].to, x);
-			siz[x] += siz[e[i].to];
-			if(siz[e[i].to] > siz[son[x]])
-				son[x] = e[i].to;
-		}
-}
-
-void dfs2(int x, int tp)
-{
-	top[x] = tp;
-	dfn[x] = ++idx;
-	rev[idx] = x;
-	if(son[x])
-		dfs2(son[x], tp);//先走重儿子
-	for(rgi i = first[x]; ~i; i = e[i]._next)
-		if(e[i].to != son[x] && e[i].to != f[x])//不是它重儿子也不是它父亲
-			dfs2(e[i].to, e[i].to);//轻链的top就是自己
-}
-
-int Query_Line(int u, int v)
-{
-	int res = 0;
-	while(top[u] != top[v])
-	{
-		if(dep[top[u]] < dep[top[v]])
-			swap(u, v);
-		res += Query(1, dfn[top[u]], dfn[u]);
-		u = f[top[u]];
-	}
-	if(dfn[u] > dfn[v])
-		swap(u, v);
-	res += Query(1, dfn[u], dfn[v]);
+		return t[p].dat;
+	Pushdown(p);
+	int mid = t[p].lc + t[p].rc >> 1; ll res = 0;
+	if(l <= mid) res += Query(p << 1, l, r), res %= mod;
+	if(mid < r) res += Query(p << 1 | 1, l, r), res %= mod;
 	return res;
 }
 
-void Add_Line(int u, int v, int w)
-{
-	while(top[u] != top[v])
-	{
-		if(dep[top[u]] < dep[top[v]])
-			swap(u, v);
-		Add(1, dfn[top[u]], dfn[u], w);
-		u = f[top[u]];
+void Add_Line(int u, int v, int w) {
+	while(T[u].top != T[v].top) {
+		if(T[T[u].top].dep < T[T[v].top].dep) std::swap(u, v);
+		Modify(1, T[T[u].top].dfn, T[u].dfn, w);
+		u = T[T[u].top].fa;
 	}
-	if(dfn[u] > dfn[v])
-		swap(u, v);
-	Add(1, dfn[u], dfn[v], w);
+	if(T[u].dep > T[v].dep) std::swap(u, v);
+	Modify(1, T[u].dfn, T[v].dfn, w);
 }
 
-void Add_Sub(int u, int val)
-{
-	Add(1, dfn[u], dfn[u] + siz[u] - 1, val);
+ll Query_Line(int u, int v) {
+	ll res = 0;
+	while(T[u].top != T[v].top) {
+		if(T[T[u].top].dep < T[T[v].top].dep) std::swap(u, v);
+		res += Query(1, T[T[u].top].dfn, T[u].dfn), res %= mod;
+		u = T[T[u].top].fa;
+	}
+	if(T[u].dep > T[v].dep) std::swap(u, v);
+	res += Query(1, T[u].dfn, T[v].dfn), res %= mod;
+	return res;
 }
 
-int Query_Sub(int u)
-{
-	return Query(1, dfn[u], dfn[u] + siz[u] - 1);
+void Add_Sub(int x, int w) {
+	Modify(1, T[x].dfn, T[x].dfn + T[x].siz - 1, w);
 }
 
-int main()
-{
-	n = read(), m = read(), rt = read(), mod = read();
+ll Query_Sub(int x) {
+	return Query(1, T[x].dfn, T[x].dfn + T[x].siz - 1);
+}
+
+int main() {
+//	freopen("cut.in", "r", stdin);
+//	freopen("cut.out", "w", stdout);
+	n = read(), m = read(), root = read(), mod = read();
 	memset(first, -1, sizeof(first));
-	for(rgi i = 1; i <= n; ++i)
-		W[i] = read();
-	for(rgi i = 1; i <= n - 1; ++i)
-	{
-		int u = read(), v = read();
-		Add_Edge(u, v);
-		Add_Edge(v, u);
-	}
-	dfs1(rt, 0);
-	dfs2(rt, rt);
-	Build(1, 1, n);
-	for(rgi i = 1; i <= m; ++i)
-	{
-		int op = read();
-		if(op == 1)
-		{
-			int u = read(), v = read(), w = read();
-			Add_Line(u, v, w);
-		}
-		else if(op == 2)
-		{
-			int u = read(), v = read();
-			printf("%d\n", Query_Line(u, v) % mod);
-		}
-		else if(op == 3)
-		{
-			int u = read(), val = read();
-			Add_Sub(u, val);
-		}
-		else if(op == 4)
-		{
-			int u = read();
-			printf("%d\n", Query_Sub(u) % mod);
+	for(rgi i = 1; i <= n; ++i) W[i] = read();
+	for(rgi i = 1; i <= n - 1; ++i) {
+		int x = read(), y = read();
+		Add_Edge(x, y);
+		Add_Edge(y, x);
+	} dfs1(root, 0), dfs2(root, root), Build(1, 1, n);
+	for(rgi i = 1; i <= m; ++i) {
+		int opt = read(), x, y, z;
+		switch(opt) {
+			case 1:
+				x = read(), y = read(), z = read();
+				Add_Line(x, y, z);
+				break;
+			case 2:
+				x = read(), y = read();
+				printf("%lld\n", Query_Line(x, y));
+				break;
+			case 3:
+				x = read(), y = read();
+				Add_Sub(x, y);
+				break;
+			case 4:
+				x = read();
+				printf("%lld\n", Query_Sub(x));
+				break;
 		}
 	}
 	return 0;
 }
+/*
+8 10 2 448348
+458 718 447 857 633 264 238 944 
+1 2
+2 3
+3 4
+6 2
+1 5
+5 7
+8 6
+3 7 611
+4 6
+3 1 267
+3 2 111
+1 6 3 153
+3 7 673
+4 8
+2 6 1
+4 7
+3 4 228
 
+*/
